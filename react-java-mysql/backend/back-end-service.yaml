@@ -3,8 +3,8 @@ kind: Service
 metadata:
   creationTimestamp: null
   labels:
-    app: back-end-service
-  name: back-end-service
+    app: backend
+  name: backend
 spec:
   ports:
   - name: 8080-8080
@@ -23,8 +23,8 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: back-end-deployment
-  name: back-end-deployment
+    app: backend
+  name: backend
 spec:
   replicas: 1
   selector:
@@ -38,7 +38,7 @@ spec:
         app: backend
     spec:
       containers:
-      - image: localhost:5000/backend
-        name: backend
-        resources: {}
+        - image: taytoto/backend-image:latest
+          name: backend
+          resources: {}
 status: {}

@@ -3,42 +3,41 @@ kind: Service
 metadata:
   creationTimestamp: null
   labels:
-    app: front-end-service
-  name: front-end-service
+    app: frontend
+  name: frontend
 spec:
   ports:
   - name: 3000-3000
     port: 3000
     protocol: TCP
-    targetPort: 3000
+    targetPort: 80
   selector:
-    app: front-end
+    app: frontend
   type: NodePort
 status:
   loadBalancer: {}
-
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: frontend-end-deployment
-  name: frontend-end-deployment
+    app: frontend
+  name: frontend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: frontend-end
+      app: frontend
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: frontend-end
+        app: frontend
     spec:
       containers:
-      - image: front-end-image
-        name: front-end-image
-        resources: {}
+        - image: taytoto/frontend-image:latest
+          name: frontend
+          resources: {}
 status: {}
